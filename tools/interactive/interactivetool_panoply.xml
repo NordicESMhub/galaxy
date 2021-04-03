@@ -1,7 +1,7 @@
 <tool id="interactive_tool_panoply" tool_type="interactive" name="Panoply" version="@VERSION@">
     <description>interative plotting tool for geo-referenced data</description>
     <macros>
-    <token name="@VERSION@">4.5.1</token>
+    <token name="@VERSION@">4.12.5</token>
     </macros>
     <requirements>
         <container type="docker">quay.io/nordicesmhub/docker-panoply:@VERSION@</container>
