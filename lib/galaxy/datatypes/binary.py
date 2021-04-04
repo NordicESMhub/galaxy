@@ -16,6 +16,7 @@ from json import dumps
 from typing import Optional
 
 import h5py
+import rasterio
 import pysam
 import pysam.bcftools
 from bx.seq.twobit import TWOBIT_MAGIC_NUMBER, TWOBIT_MAGIC_NUMBER_SWAP
@@ -2999,6 +3000,19 @@ class WiffTar(BafTar):
     def get_type(self):
         return "Sciex WIFF/SCAN archive"
 
+class JP2(Binary):
+    """JPEG 2000 binary image format"""
+    file_ext = "jp2"
+
+    def sniff(self, filename):
+        try:
+            dataset = rasterio.open(filename, driver='JP2OpenJPEG')
+            header = dataset.profile['driver']
+            if str(header) == 'JP2OpenJPEG':
+                return True
+            return False
+        except Exception:
+            return False
 
 if __name__ == '__main__':
     import doctest
