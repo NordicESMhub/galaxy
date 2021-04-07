@@ -17,7 +17,9 @@
         mkdir /config/home  &&
         mkdir /config/home/output &&
         export HOME=/config/home &&
-        cp '$infile' '/config/home/$infile.display_name' &&
+        #if $infile:
+            cp '$infile' '/config/home/$infile.display_name' &&
+        #end if
         /init ;
         echo "Galaxy VRM Editor version @VERSION@" > output/version.txt &&
         cp /config/home/output/* output/ | true &&
