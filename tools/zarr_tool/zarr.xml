@@ -1,0 +1,28 @@
+<tool id="zarr_create" name="ZarrCreate" version="1.0.0">
+  <description>Create zarr</description>
+  <command><![CDATA[
+    python '$__tool_directory__/zarr_create.py' zarr_test &&
+    mv zarr_test '${zarr_file.files_path}'
+  ]]></command>
+  <requirements>
+    <requirement type="package" version="2.16.1">zarr</requirement>
+    <requirement type="package" version="2023.10.1">xarray</requirement>
+    <requirement type="package" version="1.24.4">numpy</requirement>
+    <requirement type="package" version="2.1.2">pandas</requirement>
+  </requirements>
+  <inputs>
+  </inputs>
+    <outputs>
+        <data format="zarr" name="zarr_file" label="${tool.name} on ${on_string}: ZARR" />
+    </outputs>
+  <help>
+
+**What it does**
+
+Creates a zarr test file.
+
+
+  </help>
+  <citations>
+  </citations>
+</tool>
